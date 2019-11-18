@@ -1,0 +1,20 @@
+{#{% extends 'base.html' %}#}
+
+{% block content %}
+    <h2>GitHub API V.3</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">search on github and populate DB</button>
+    </form>
+    {% if repo_list %}
+        <p>{{ repo_list }}</p>
+    {% endif %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
